@@ -1,0 +1,8 @@
+0	Start and end of the runs. Including backoff if an instance is running
+1	include job start end, and per job stats - created, deleted, errors
+2	Include job phases, and errors encountered
+3	Include per copied file completion report
+4	Include per file/dir create, delete
+5	Include entries made in the lists - updlist, dellist. newfiles entries are not reported 
+6	Include files/dirs that are up-to-date
+7	Include dumping of all action lists - newlist, updlist, dellist

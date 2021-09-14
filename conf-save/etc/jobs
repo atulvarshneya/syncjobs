@@ -1,0 +1,8 @@
+# jobs file format:
+# <job name>:<source folder location>:<dst folder location>:<sync or contribute>
+Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync
+Library:/media/Library:/shares/USBDRIVE/SYNCJOBS/Library:sync
+Users Files:/media/Users Files:/shares/USBDRIVE/SYNCJOBS/Users Files:sync
+Videos:/media/Videos:/shares/USBDRIVE/SYNCJOBS/Videos:sync
+Music:/media/Music:/shares/USBDRIVE/SYNCJOBS/Music:sync
+Pictures:/media/Pictures:/shares/USBDRIVE/SYNCJOBS/Pictures:sync
