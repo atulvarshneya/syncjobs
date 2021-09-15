@@ -95,10 +95,10 @@ for j in jobs:
 	logger.log(1,"")
 
 msg = "\nCreated dirs:  {:5d}\nCopied files:  {:5d}\nDeleted dirs:  {:5d}\nDeleted files: {:5d}\n".format(totmkdir,totcpfile,totdldir,totdlfile)
-if numerr == 0:
+if totnumerrs == 0:
 	errmsg = "No errors"
 else:
-	errmsg = "Errors: {:5d}".format(numerr)
+	errmsg = "Errors: {:5d}".format(totnumerrs)
 pushnoti.pushnotify("syncjobs completed. "+errmsg+msg)
 
 os.remove(selfname)
