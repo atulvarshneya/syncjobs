@@ -1,0 +1,15 @@
+[Unit]
+Description=Syncjobs WebGUI Service
+After=network.target
+
+[Service]
+Type=Simple
+User=pi
+Group=pi
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/home/pi/syncjobs/sjweb.sh
+Restart=always
+Restartsec=3
+
+[Install]
+WantedBy=multi-user.target
