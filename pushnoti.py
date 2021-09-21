@@ -1,10 +1,14 @@
 
 import http.client, urllib
 
+import os
 import config
 
 def pushnotify(message):
-	reg = config.Config("/shares/USBDRIVE/SYNCJOBS.conf/etc/registry").read_registry()
+	regfile = os.environ.get("SJREGISTRY")
+	if regfile is None:
+		regfile = "~/.sjregistry"
+	reg = config.Config(regfile).read_registry()
 	APP_TOKEN = reg["app-token"]
 	# print("APP_TOKEN",APP_TOKEN)
 	USER_KEY = reg["user-key"]
