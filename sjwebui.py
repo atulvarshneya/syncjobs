@@ -7,10 +7,13 @@ import config
 from flask import Flask
 app = Flask(__name__)
 
-regfile = os.environ.get("SJREGISTRY")
-if regfile is None:
-	regfile = "~/.sjregistry"
-reg = config.Config(regfile).read_registry()
+
+def readreg():
+	regfile = os.environ.get("SJREGISTRY")
+	if regfile is None:
+		regfile = "~/.sjregistry"
+	reg = config.Config(regfile).read_registry()
+	return reg
 
 def pageheader():
 	titletext = "<h1>SyncJobs</h1>"
@@ -24,18 +27,20 @@ def pageheader():
 
 @app.route('/')
 def hello():
+	reg = readreg()
 	outtext = ""
 	for r in reg.keys():
 		outtext = outtext + \
 			"<div style=\"font-size:16px\">" + \
 			"<pre>" + \
-			r + "  " + "\t:\t" + \
+			r + ":\n\t" + \
 			reg[r] + "\n\n" + "</pre>"
 		outtext = outtext + "</div>"
 	return pageheader() + outtext
 
 @app.route('/jobfile')
 def jobfile():
+	reg = readreg()
 	jobfile = reg["jobsloc"]
 	jobs = config.Config(jobfile).read_entries()
 	outtext = ""
@@ -62,6 +67,7 @@ def logfile():
 	global frames, totcnt, frameid, scrframe
 	global total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors
 
+	reg = readreg()
 	frames = []
 	totcnt = []
 	frameid = 0
