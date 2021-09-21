@@ -7,7 +7,7 @@ Type=Simple
 User=pi
 Group=pi
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
-ExecStart=/home/pi/syncjobs/sjweb.sh
+ExecStart=/home/pi/syncjobs/sjwebui.sh
 Restart=always
 Restartsec=3
 
