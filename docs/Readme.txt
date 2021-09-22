@@ -24,6 +24,9 @@ Registry file -
 		app-token:aumj5i8rc3mt6qb6mu52x2r946ozf7
 		user-key:uxntk5wn9hqxinkcs7w2i6pdbqtjb3
 
+		- SJ WebGUI URL; can put the logfile display URL
+		webui:http://netdisk1.lan:5000/logfile
+
 Jobs file -
 	* lists the sync jobs. Format is as
 		# <job name>:<source folder location>:<dst folder location>:<sync or contribute>
