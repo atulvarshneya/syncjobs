@@ -3,13 +3,14 @@ Description=Syncjobs WebGUI Service
 After=network.target
 
 [Service]
-Type=Simple
+Type=simple
 User=pi
 Group=pi
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 ExecStart=/home/pi/syncjobs/sjwebui.sh
+WorkingDirectory=/home/pi/syncjobs/
 Restart=always
-Restartsec=3
+RestartSec=3
 
 [Install]
 WantedBy=multi-user.target
