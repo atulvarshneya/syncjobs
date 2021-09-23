@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Jobs</h1>
+	<table cellpadding=5 id=registrytable>
+	</tr>
+    {% for i in jobs %}
+ 		<tr>
+			<td> <b> {{ i[0] }} </b> </td>
+			<td> <pre> {{ i[1] }} </pre> </td>
+			<td> <pre> {{ i[2] }} </pre> </td>
+			<td> <pre> {{ i[3] }} </pre> </td>
+		</tr>
+    {% endfor %}
+	</table>
+{% endblock %}

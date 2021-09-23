@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Run Details</h1>
+<p>
+	{% if (scrframe > 0) %}
+		<a href=/frame/{{scrframe-1}}>prev</a>
+	{% else %}
+		prev
+	{% endif %}
+	move to
+	{% if (scrframe < fmlast) %}
+		<a href=/frame/{{scrframe+1}}>next</a>
+	{% else %}
+		next
+	{% endif %}
+	&emsp; | &emsp;
+	Copied: Dirs {{ fmtots[scrframe][0]}}, Files {{ fmtots[scrframe][1] }}. &emsp;
+	Deleted: Dirs {{ fmtots[scrframe][2] }}, Files {{ fmtots[scrframe][3] }}. &emsp;
+	ERRORS: {{ fmtots[scrframe][4] }}
+</p>
+<hr>
+<pre>
+{{ frames[scrframe] }}
+</pre>
+{% endblock %}
