@@ -10,9 +10,9 @@
 <body>
 	<h1>SyncJobs</h1>
 	<p>
-	<a href='/'>Home</a> &emsp; 
-	<a href='/logfile'>Log File</a> &emsp; 
-	<a href='/jobfile'>Jobs List</a> 
+	<a href={{url_for('home')}}>Home</a> &emsp; 
+	<a href={{url_for('logfile')}}>Log File</a> &emsp; 
+	<a href={{url_for('jobfile')}}>Jobs List</a> 
 	</p>
 	<hr>
 	{% block content %}{% endblock %}
