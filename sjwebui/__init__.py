@@ -1,5 +1,5 @@
 from flask import Flask
-from flaskconfig import flaskconfig
+from sjwebui.flaskconfig import flaskconfig
 
 app = Flask(__name__)
 app.config.from_object(flaskconfig)
