@@ -5,7 +5,7 @@ import sys
 import shutil as su
 import datetime
 import time
-import logger
+import syncjobs.logger as logger
 
 
 def listdir(path,contents_list):

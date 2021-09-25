@@ -2,12 +2,12 @@
 
 import os
 import sys
-import config
+import syncjobs.config as config
 import datetime
 import argparse
-import pushnoti
-import logger
-import coreops as core
+import syncjobs.pushnoti as pushnoti
+import syncjobs.logger as logger
+import syncjobs.coreops as core
 
 #####################################################################
 ## MAIN

@@ -2,7 +2,7 @@
 import http.client, urllib
 
 import os
-import config
+import syncjobs.config as config
 
 def pushnotify(message, webui_url=None):
 	regfile = os.environ.get("SJREGISTRY")
@@ -18,7 +18,7 @@ def pushnotify(message, webui_url=None):
 	msgcontent = { "token": APP_TOKEN, "user": USER_KEY, "message": message, }
 	if not webui_url is None:
 		msgcontent["url"] = webui_url
-		msgcontent["url_title"] = "Details"
+		msgcontent["url_title"] = "Browse logs"
 	conn.request("POST", "/1/messages.json",
   		urllib.parse.urlencode(msgcontent),
 		{ "Content-type": "application/x-www-form-urlencoded" })

@@ -4,7 +4,7 @@ import os
 import signal
 import time
 import sys
-import config
+import syncjobs.config as config
 
 # Read the registry and setup jobs file, pid dir, and log file
 reg = config.Config("/home/pi/syncjobs/etc/registry").read_registry()
