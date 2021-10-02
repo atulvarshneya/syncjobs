@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import os
-import config
+import syncjobs.config as config
 from flask import render_template, flash, redirect, url_for
 from sjwebui import app
 
