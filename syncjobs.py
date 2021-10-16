@@ -24,6 +24,7 @@ if LOGFILE == "":
 JOBSFILE = reg["jobsloc"]
 RUNDIR = reg["rundir"]
 MAXLOGSZ = int(reg["maxlogsz"])
+PUSHNOTI=reg["pushnoti"]
 logger.loglevel = int(reg["loglevel"])
 webui_url = reg["webui"]
 
@@ -96,7 +97,8 @@ for j in jobs:
 	logger.log(1,"")
 
 msg = "Created dirs:  {:5d}\nCopied files:  {:5d}\nDeleted dirs:  {:5d}\nDeleted files: {:5d}\nERRORS  {:5d}\n".format(totmkdir,totcpfile,totdldir,totdlfile,totnumerrs)
-pushnoti.pushnotify("syncjobs completed.\n" + msg, webui_url=webui_url)
+if PUSHNOTI == "on":
+	pushnoti.pushnotify("syncjobs completed.\n" + msg, webui_url=webui_url)
 
 os.remove(selfname)
 
