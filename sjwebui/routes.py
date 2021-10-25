@@ -26,6 +26,7 @@ def jobfile():
 
 frames = []
 fmtots = []
+fmtmstamp = []
 fmlast = 0
 scrframe = 0
 
@@ -38,7 +39,8 @@ def logfile():
 	fmtots = []
 	fmlast = 0
 	scrframe = 0
-	logtext = ""
+	logtext = "-no entry-"
+	tmstamp = "-no entry-"
 	total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors = 0,0,0,0,0
 	with open(reg["logfile"], "r") as lfd:
 		while True:
@@ -48,8 +50,10 @@ def logfile():
 			if ln[20:27] == "STARTED":
 				frames.append(logtext)
 				fmtots.append((total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors))
+				fmtmstamp.append(tmstamp)
 				fmlast = fmlast + 1
 				logtext = ""
+				tmstamp = ln[0:19]
 				total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors = 0,0,0,0,0
 			if ln[20:32] == "Created dirs":
 				total_credirs = total_credirs + int(ln[33:])
@@ -64,8 +68,10 @@ def logfile():
 			logtext = logtext + ln
 		frames.append(logtext)
 		fmtots.append((total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors))
+		fmtmstamp.append(tmstamp)
 		scrframe = fmlast
-	return render_template('logs.html', frames=frames, scrframe=scrframe, fmtots=fmtots, fmlast=fmlast)
+	print(fmtmstamp[scrframe])
+	return render_template('logs.html', frames=frames, scrframe=scrframe, fmtmstamp=fmtmstamp, fmtots=fmtots, fmlast=fmlast)
 
 @app.route('/frame/<frameidstr>')
 def frame(frameidstr):
@@ -74,4 +80,4 @@ def frame(frameidstr):
 	scrframe = int(frameidstr)
 	if scrframe < 0 or scrframe >= fmlast:
 		return redirect(url_for('logfile'))
-	return render_template('logs.html', frames=frames, scrframe=scrframe, fmtots=fmtots, fmlast=fmlast)
+	return render_template('logs.html', frames=frames, scrframe=scrframe, fmtmstamp=fmtmstamp, fmtots=fmtots, fmlast=fmlast)

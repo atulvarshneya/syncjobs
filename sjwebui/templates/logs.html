@@ -15,6 +15,7 @@
 		next
 	{% endif %}
 	&emsp; | &emsp;
+	Start time: {{ fmtmstamp[scrframe] }} &emsp;
 	Copied: Dirs {{ fmtots[scrframe][0]}}, Files {{ fmtots[scrframe][1] }}. &emsp;
 	Deleted: Dirs {{ fmtots[scrframe][2] }}, Files {{ fmtots[scrframe][3] }}. &emsp;
 	ERRORS: {{ fmtots[scrframe][4] }}
