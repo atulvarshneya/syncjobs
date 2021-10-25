@@ -37,6 +37,7 @@ def logfile():
 	reg = readreg()
 	frames = []
 	fmtots = []
+	fmtmstamp = []
 	fmlast = 0
 	scrframe = 0
 	logtext = "-no entry-"
