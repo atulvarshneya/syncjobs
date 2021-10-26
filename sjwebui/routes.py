@@ -32,7 +32,7 @@ scrframe = 0
 
 @app.route('/logfile')
 def logfile():
-	global frames, fmtots, fmlast, scrframe
+	global frames, fmtots, fmlast, scrframe, fmtmstamp
 
 	reg = readreg()
 	frames = []
@@ -71,12 +71,11 @@ def logfile():
 		fmtots.append((total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors))
 		fmtmstamp.append(tmstamp)
 		scrframe = fmlast
-	print(fmtmstamp[scrframe])
 	return render_template('logs.html', frames=frames, scrframe=scrframe, fmtmstamp=fmtmstamp, fmtots=fmtots, fmlast=fmlast)
 
 @app.route('/frame/<frameidstr>')
 def frame(frameidstr):
-	global scrframe, frames, fmtots, fmlast
+	global scrframe, frames, fmtots, fmtmstamp, fmlast
 
 	scrframe = int(frameidstr)
 	if scrframe < 0 or scrframe >= fmlast:
