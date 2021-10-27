@@ -21,8 +21,17 @@ Registry file -
 		loglevel:4
 
 		- Push otification information (using Pushover service)
+		pushnotify:off
 		app-token:aumj5i8rc3mt6qb6mu52x2r946ozf7
 		user-key:uxntk5wn9hqxinkcs7w2i6pdbqtjb3
+
+		- Email notification information
+		emaiilnotify:on
+		smtp-server:smtp.gmail.com
+		smtp-port:587
+		gmail-username:home.varshneya@gmail.com
+		gmail-password:xxxx
+		recipient:atul.varshneya@gmail.com
 
 		- SJ WebGUI URL; can put the logfile display URL
 		webui:http://netdisk1.lan:5000/logfile

@@ -25,7 +25,7 @@ emailnotify:on
 smtp-server:smtp.gmail.com
 smtp-port:587
 gmail-username:home.varshneya@gmail.com
-gmail-password:anianu123
+gmail-password:xxxx
 recipient:atul.varshneya@gmail.com
 
 # WebGUI url
