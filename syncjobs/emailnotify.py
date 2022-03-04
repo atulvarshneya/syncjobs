@@ -37,6 +37,7 @@ class Emailer:
 def emailnotify(message, webui_url=None):
 	sender = Emailer()
 	emailSubject = "netdisk1 backup"
-	sender.sendmail(emailSubject, message)  
+	emailtxt = message + "\n\n" + webui_url
+	sender.sendmail(emailSubject, emailtxt)  
 	return 0
 
