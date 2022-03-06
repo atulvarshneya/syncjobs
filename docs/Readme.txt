@@ -38,9 +38,9 @@ Registry file -
 
 Jobs file -
 	* lists the sync jobs. Format is as
-		# <job name>:<source folder location>:<dst folder location>:<sync or contribute>
+		# <job name>:<source folder location>:<dst folder location>:<sync or contribute><optioanlly :mounted>
 	For example
-		Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync
+		Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync:mounted
 		Library:/media/Library:/shares/USBDRIVE/SYNCJOBS/Library:sync
 
 Log file

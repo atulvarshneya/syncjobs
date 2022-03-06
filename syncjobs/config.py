@@ -55,6 +55,5 @@ if __name__ == "__main__":
 	jobs = jobsobj.read_entries()
 	for i in jobs:
 		print(i[0],":")
-		print("\t", i[1])
-		print("\t", i[2])
-		print("\t", i[3])
+		for idx in range(1,len(i)):
+			print("\t", i[idx])

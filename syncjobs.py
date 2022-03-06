@@ -9,6 +9,7 @@ import syncjobs.pushnotify as pushnoti
 import syncjobs.emailnotify as emailnoti
 import syncjobs.logger as logger
 import syncjobs.coreops as core
+import syncjobs.getmounts as getmounts
 
 #####################################################################
 ## MAIN
@@ -67,6 +68,9 @@ open(selfname,"a").close()
 ### START
 logger.log(0,"STARTED ============================================================")
 
+## get a map of all mounted filesystems
+allmnts = getmounts.getmounts()
+
 totnumerrs, totmkdir, totcpfile, totdldir, totdlfile = (0,0,0,0,0)
 ## go over each job
 logger.log(2,"JOBSFILE =", JOBSFILE)
@@ -77,19 +81,33 @@ for j in jobs:
 	DSTDIR = j[2]
 	syncflags = j[3]
 
-	logger.log(1,"Processing job: {:s}, source: {:s}, destination: {:s}, syncflags: {:s}".format(j[0], SRCDIR, DSTDIR, syncflags))
+	# check for optional mount flag
+	mountflag = "<absent>"
+	if len(j) > 4 and j[4] == "mounted":
+		mountflag = j[4]
+		# check if SRCDIR is a mountpoint for a current fs mount
+		if SRCDIR in allmnts.keys():
+			mntsrc = allmnts[SRCDIR]
+			mountOK = True
+		else:
+			mountOK = False
 
-	fullist = {}
-	updlist = {}
-	dellist = {}
-	core.listdir(SRCDIR,fullist)
-	logger.log(2,"Completed scanning", SRCDIR)
-	core.checkdir(DSTDIR,fullist,updlist,dellist)
-	logger.log(2,"Completed comparing with", DSTDIR)
+	logger.log(1,"Processing job: {:s}, source: {:s}, destination: {:s}, syncflags: {:s}, mountflag: {:s}".format(j[0], SRCDIR, DSTDIR, syncflags, mountflag))
+	if mountflag == "mounted" and not mountOK:
+		logger.log(1,"MOUNT CHECK FAILED. Skipping job.")
+		(mkdir, cpfile, dldir, dlfile, numerr) = (0, 0, 0, 0, 1)
+	else:
+		fullist = {}
+		updlist = {}
+		dellist = {}
+		core.listdir(SRCDIR,fullist)
+		logger.log(2,"Completed scanning", SRCDIR)
+		core.checkdir(DSTDIR,fullist,updlist,dellist)
+		logger.log(2,"Completed comparing with", DSTDIR)
 
-	logger.log(2, "Applying deltas ...")
-	(mkdir, cpfile, dldir, dlfile, numerr) = \
-		core.apply_newupddel(SRCDIR,DSTDIR, fullist, updlist, dellist, syncflags)
+		logger.log(2, "Applying deltas ...")
+		(mkdir, cpfile, dldir, dlfile, numerr) = \
+			core.apply_newupddel(SRCDIR,DSTDIR, fullist, updlist, dellist, syncflags)
 	totmkdir = totmkdir + mkdir
 	totcpfile = totcpfile + cpfile
 	totdldir = totdldir + dldir
