@@ -42,6 +42,7 @@ Jobs file -
 	For example
 		Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync:50:mounted
 		Library:/media/Library:/shares/USBDRIVE/SYNCJOBS/Library:sync:200
+	if maxdeletes id exceeded the deltas are not applied, irrespective of <sync or contribute> flag; since something is too off
 
 Log file
 	* This file can grow up to the size specified in registry, and then is moved to <logfilename>.<yyyymmdd>
