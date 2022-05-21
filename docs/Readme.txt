@@ -38,10 +38,10 @@ Registry file -
 
 Jobs file -
 	* lists the sync jobs. Format is as
-		# <job name>:<source folder location>:<dst folder location>:<sync or contribute><optioanlly :mounted>
+		# <job name>:<source folder location>:<dst folder location>:<sync or contribute>:<maxdeletes><optioanlly :mounted>
 	For example
-		Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync:mounted
-		Library:/media/Library:/shares/USBDRIVE/SYNCJOBS/Library:sync
+		Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync:50:mounted
+		Library:/media/Library:/shares/USBDRIVE/SYNCJOBS/Library:sync:200
 
 Log file
 	* This file can grow up to the size specified in registry, and then is moved to <logfilename>.<yyyymmdd>

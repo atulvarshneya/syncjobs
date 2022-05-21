@@ -80,11 +80,12 @@ for j in jobs:
 	SRCDIR = j[1]
 	DSTDIR = j[2]
 	syncflags = j[3]
+	maxdels = 0 if not j[4].isdigit() else int(j[4])
 
 	# check for optional mount flag
 	mountflag = "<absent>"
-	if len(j) > 4 and j[4] == "mounted":
-		mountflag = j[4]
+	if len(j) > 5 and j[5] == "mounted":
+		mountflag = j[5]
 		# check if SRCDIR is a mountpoint for a current fs mount
 		if SRCDIR in allmnts.keys():
 			mntsrc = allmnts[SRCDIR]
@@ -104,10 +105,14 @@ for j in jobs:
 		logger.log(2,"Completed scanning", SRCDIR)
 		core.checkdir(DSTDIR,fullist,updlist,dellist)
 		logger.log(2,"Completed comparing with", DSTDIR)
-
-		logger.log(2, "Applying deltas ...")
-		(mkdir, cpfile, dldir, dlfile, numerr) = \
-			core.apply_newupddel(SRCDIR,DSTDIR, fullist, updlist, dellist, syncflags)
+		if len(dellist) > maxdels:
+			logger.log(2,"Files to delete = {:d} exceeds max configured for this job = {:d}".format(len(dellist),maxdels))
+			logger.log(2, "Skipping deltas ...")
+			(mkdir, cpfile, dldir, dlfile, numerr) = (0, 0, 0, 0, 1)
+		else:
+			logger.log(2, "Applying deltas ...")
+			(mkdir, cpfile, dldir, dlfile, numerr) = \
+				core.apply_newupddel(SRCDIR,DSTDIR, fullist, updlist, dellist, syncflags)
 	totmkdir = totmkdir + mkdir
 	totcpfile = totcpfile + cpfile
 	totdldir = totdldir + dldir
