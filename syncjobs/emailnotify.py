@@ -3,8 +3,12 @@
 import syncjobs.config as config
 import smtplib
 import os
+import syncjobs.logger as logger
 
 class Emailer:
+	def __init__(self):
+		pass
+
 	def sendmail(self, subject, content):
 		regfile = os.environ.get("SJREGISTRY")
 		if regfile is None:
@@ -35,9 +39,13 @@ class Emailer:
 		session.quit
 
 def emailnotify(message, webui_url=None):
-	sender = Emailer()
-	emailSubject = "netdisk1 backup"
-	emailtxt = message + "\n\n" + webui_url
-	sender.sendmail(emailSubject, emailtxt)  
-	return 0
+	try:
+		sender = Emailer()
+		emailSubject = "netdisk1 backup"
+		emailtxt = message + "\n\n" + webui_url
+		sender.sendmail(emailSubject, emailtxt)  
+	except smtplib.SMTPException as e:
+		error_code = e.smtp_code
+		error_message = e.smtp_error
+		logger.log(2,error_message)
 
