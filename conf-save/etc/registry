@@ -25,6 +25,7 @@ emailnotify:on
 smtp-server:smtp.gmail.com
 smtp-port:587
 gmail-username:home.varshneya@gmail.com
+# this is the app password generated on google for home.varshneya@gmail.com
 gmail-password:xxxx
 recipient:atul.varshneya@gmail.com
 
