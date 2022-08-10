@@ -66,6 +66,8 @@ def logfile():
 				total_delfiles = total_delfiles + int(ln[34:])
 			if ln[20:26] == "ERRORS":
 				total_errors = total_errors + int(ln[27:])
+			if ln[20:32] == "DELTA ERRORS":
+				total_errors = total_errors + int(ln[34:])
 			logtext = logtext + ln
 		frames.append(logtext)
 		fmtots.append((total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors))

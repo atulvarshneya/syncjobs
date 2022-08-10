@@ -107,8 +107,9 @@ for j in jobs:
 		logger.log(2,"Completed comparing with", DSTDIR)
 		if len(dellist) > maxdels:
 			logger.log(2,"Files to delete = {:d} exceeds max configured for this job = {:d}".format(len(dellist),maxdels))
-			logger.log(2, "Skipping deltas ...")
+			logger.log(2, "SKIPPING DELTAS ...")
 			(mkdir, cpfile, dldir, dlfile, numerr) = (0, 0, 0, 0, 1)
+			logger.log(1,"DELTA ERRORS \t", 1)
 		else:
 			logger.log(2, "Applying deltas ...")
 			(mkdir, cpfile, dldir, dlfile, numerr) = \
