@@ -84,7 +84,7 @@ for j in jobs:
 
 	# check for optional mount flag
 	mountflag = "<absent>"
-	if len(j) > 5 and j[5] == "mounted":
+	if len(j) > 5 and j[5] == "mountchk":
 		mountflag = j[5]
 		# check if SRCDIR is a mountpoint for a current fs mount
 		if SRCDIR in allmnts.keys():
@@ -94,7 +94,7 @@ for j in jobs:
 			mountOK = False
 
 	logger.log(1,"Processing job: {:s}, source: {:s}, destination: {:s}, syncflags: {:s}, mountflag: {:s}".format(j[0], SRCDIR, DSTDIR, syncflags, mountflag))
-	if mountflag == "mounted" and not mountOK:
+	if mountflag == "mountchk" and not mountOK:
 		logger.log(1,"MOUNT CHECK FAILED. Skipping job.")
 		(mkdir, cpfile, dldir, dlfile, numerr) = (0, 0, 0, 0, 1)
 	else:

@@ -38,9 +38,9 @@ Registry file -
 
 Jobs file -
 	* lists the sync jobs. Format is as
-		# <job name>:<source folder location>:<dst folder location>:<sync or contribute>:<maxdeletes><optioanlly :mounted>
+		# <job name>:<source folder location>:<dst folder location>:<sync or contribute>:<maxdeletes><optioanlly :mountchk>
 	For example
-		Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync:50:mounted
+		Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync:50:mountchk
 		Library:/media/Library:/shares/USBDRIVE/SYNCJOBS/Library:sync:200
 	if maxdeletes id exceeded the deltas are not applied, irrespective of <sync or contribute> flag; since something is too off
 
