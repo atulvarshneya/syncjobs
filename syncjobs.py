@@ -102,9 +102,9 @@ for j in jobs:
 		updlist = {}
 		dellist = {}
 		core.listdir(SRCDIR,fullist)
-		logger.log(2,"Completed scanning", SRCDIR)
+		logger.log(2,f"Completed scanning {SRCDIR}, [{len(fullist)} files]")
 		core.checkdir(DSTDIR,fullist,updlist,dellist)
-		logger.log(2,"Completed comparing with", DSTDIR)
+		logger.log(2,f"Completed comparing with {DSTDIR}, [{len(updlist)} upds, {len(dellist)} dels]")
 		if len(dellist) > maxdels:
 			logger.log(2,"Files to delete = {:d} exceeds max configured for this job = {:d}".format(len(dellist),maxdels))
 			logger.log(2, "SKIPPING DELTAS ...")
