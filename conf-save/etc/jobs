@@ -1,7 +1,6 @@
 # jobs file format:
 # <job name>:<source folder location>:<dst folder location>:<sync or contribute>:<maxdeletes><:optionally mountchk>
-Common:/media/Common:/shares/USBDRIVE/SYNCJOBS/Common:sync:50:mountchk
-Library:/media/Library:/shares/USBDRIVE/SYNCJOBS/Library:sync:50:mountchk
+TempItems:/media/TempItems:/shares/USBDRIVE/SYNCJOBS/TempItems:sync:50:mountchk
 Users Files:/media/Users Files:/shares/USBDRIVE/SYNCJOBS/Users Files:sync:50:mountchk
 Videos:/media/Videos:/shares/USBDRIVE/SYNCJOBS/Videos:sync:50:mountchk
 Music:/media/Music:/shares/USBDRIVE/SYNCJOBS/Music:sync:50:mountchk

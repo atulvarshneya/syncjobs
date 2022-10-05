@@ -3,8 +3,7 @@ PARTUUID=1d03d4b9-01  /boot           vfat    defaults          0       2
 PARTUUID=1d03d4b9-02  /               ext4    defaults,noatime  0       1
 # a swapfile is not a swap partition, no line here
 #   use  dphys-swapfile swap[on|off]  for that
-//netdisk2.lan/Common /media/Common cifs username=guest,password=,uid=pi,gid=pi 0 0
-//netdisk2.lan/Library /media/Library cifs username=guest,password=,uid=pi,gid=pi 0 0
+//netdisk2.lan/TempItems /media/TempItems cifs username=guest,password=,uid=pi,gid=pi 0 0
 //netdisk2.lan/Videos /media/Videos cifs username=guest,password=,uid=pi,gid=pi 0 0
 //netdisk2.lan/Music /media/Music cifs username=guest,password=,uid=pi,gid=pi 0 0
 //netdisk2.lan/Pictures /media/Pictures cifs username=guest,password=,uid=pi,gid=pi 0 0
