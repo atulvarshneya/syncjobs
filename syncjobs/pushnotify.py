@@ -9,9 +9,9 @@ def pushnotify(message, webui_url=None):
 	if regfile is None:
 		regfile = "~/.sjregistry"
 	reg = config.Config(regfile).read_registry()
-	APP_TOKEN = reg["app-token"]
+	APP_TOKEN = reg["-app-token"]
 	# print("APP_TOKEN",APP_TOKEN)
-	USER_KEY = reg["user-key"]
+	USER_KEY = reg["-user-key"]
 	# print("USER_KEY",USER_KEY)
 
 	conn = http.client.HTTPSConnection("api.pushover.net:443")

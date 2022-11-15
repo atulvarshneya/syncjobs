@@ -17,7 +17,7 @@ class Emailer:
 		SMTP_SERVER = reg["smtp-server"]
 		SMTP_PORT = reg["smtp-port"]
 		GMAIL_USERNAME = reg["gmail-username"]
-		GMAIL_PASSWORD = reg["gmail-password"]
+		GMAIL_PASSWORD = reg["-gmail-password"]
 		RECIPIENT = reg["recipient"]
 
 		#Create Headers

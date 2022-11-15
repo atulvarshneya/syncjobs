@@ -42,9 +42,14 @@ parser = argparse.ArgumentParser(description="My own synctoy replacement")
 parser.add_argument("-i", action="store_true", help="Show all logging on screen")
 parser.add_argument("-l", default=logger.loglevel, type=int, help="Logging level")
 parser.add_argument("-j", type=str, default="", help="Job name")
-parser.add_argument("-c", action="store_true", help="List the jobs details, and exit")
+parser.add_argument("-c", action="store_true", help="List the registry and jobs details, and exit")
 args = parser.parse_args()
 if args.c:
+	for r in reg.keys():
+		regval = reg[r]
+		if r[0] == '-':
+			regval = '<hidden>'
+		print(f'REG {r:15s} {regval}')
 	jobs = config.Config(JOBSFILE).read_entries()
 	lth = [0,0,0,0,0,0]
 	for j in jobs:
@@ -54,7 +59,7 @@ if args.c:
 		lth[3] = max(lth[3], len(j[3]))
 		lth[4] = max(lth[4], len(j[4]))
 		lth[5] = max(lth[5], len(j[5]))
-	fmt = '{0:'+f'{lth[0]}'+'} '+'{1:'+f'{lth[1]}'+'} '+'{2:'+f'{lth[2]}'+'} '+'{3:'+f'{lth[3]}'+'} '+'{4:>'+f'{lth[4]}'+'} '+'{5:'+f'{lth[5]}'+'}'
+	fmt = 'JOB {0:'+f'{lth[0]}'+'} '+'{1:'+f'{lth[1]}'+'} '+'{2:'+f'{lth[2]}'+'} '+'{3:'+f'{lth[3]}'+'} '+'{4:>'+f'{lth[4]}'+'} '+'{5:'+f'{lth[5]}'+'}'
 	for j in jobs:
 		print(fmt.format(j[0], j[1], j[2], j[3], j[4], j[5]))
 	exit(0)

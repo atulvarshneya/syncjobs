@@ -1,4 +1,5 @@
 # file format is like key:value
+# keynames starting with - are considered sensitive information
 
 # location of the file listing the jobs
 jobsloc:/shares/USBDRIVE/SYNCJOBS.conf/etc/jobs
@@ -17,8 +18,8 @@ loglevel:4
 
 ##Push otification information
 pushnotify:off
-app-token:aumj5i8rc3mt6qb6mu52x2r946ozf7
-user-key:uxntk5wn9hqxinkcs7w2i6pdbqtjb3
+-app-token:xxxx
+-user-key:xxxx
 
 ##Email notification information
 emailnotify:on
@@ -26,7 +27,7 @@ smtp-server:smtp.gmail.com
 smtp-port:587
 gmail-username:home.varshneya@gmail.com
 # this is the app password generated on google for home.varshneya@gmail.com
-gmail-password:xxxx
+-gmail-password:xxxx
 recipient:atul.varshneya@gmail.com
 
 # WebGUI url
