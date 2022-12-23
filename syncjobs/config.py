@@ -48,8 +48,8 @@ if __name__ == "__main__":
 		regfile = "~/.sjregistry"
 	regobj = Config(regfile)
 	reg = regobj.read_registry()
-	for i in reg.keys():
-		print(i,reg[i])
+	for i,v in reg.items():
+		print(i,v)
 
 	jobsobj = Config(reg["jobsloc"])
 	jobs = jobsobj.read_entries()

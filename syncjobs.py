@@ -45,20 +45,15 @@ parser.add_argument("-j", type=str, default="", help="Job name")
 parser.add_argument("-c", action="store_true", help="List the registry and jobs details, and exit")
 args = parser.parse_args()
 if args.c:
-	for r in reg.keys():
-		regval = reg[r]
+	for r,regval in reg.items():
 		if r[0] == '-':
 			regval = '<hidden>'
 		print(f'REG {r:15s} {regval}')
 	jobs = config.Config(JOBSFILE).read_entries()
 	lth = [0,0,0,0,0,0]
 	for j in jobs:
-		lth[0] = max(lth[0], len(j[0]))
-		lth[1] = max(lth[1], len(j[1]))
-		lth[2] = max(lth[2], len(j[2]))
-		lth[3] = max(lth[3], len(j[3]))
-		lth[4] = max(lth[4], len(j[4]))
-		lth[5] = max(lth[5], len(j[5]))
+		for fid in range(6):
+			lth[fid] = max(lth[fid], len(j[fid]))
 	fmt = 'JOB {0:'+f'{lth[0]}'+'} '+'{1:'+f'{lth[1]}'+'} '+'{2:'+f'{lth[2]}'+'} '+'{3:'+f'{lth[3]}'+'} '+'{4:>'+f'{lth[4]}'+'} '+'{5:'+f'{lth[5]}'+'}'
 	for j in jobs:
 		print(fmt.format(j[0], j[1], j[2], j[3], j[4], j[5]))

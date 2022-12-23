@@ -3,10 +3,7 @@
 def getmounts():
 	allmounts = {}
 	with open("/proc/mounts","r") as fd:
-		while True:
-			ln = fd.readline()
-			if not ln:
-				break
+		for ln in fd:
 			ln = ln.strip()
 			if len(ln) != 0 and ln[0] != '#':
 				tokens = ln.split(" ")

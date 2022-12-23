@@ -179,25 +179,3 @@ def apply_newupddel(src, dst, newlist, updlist, dellist, syncflags):
 
 	return (num_makedir, num_copyfile, num_deldir, num_delfile, num_errors)
 
-##Non-essential functions - can delete them later on#################
-#####################################################################
-
-def save_list(file, contents_list):
-	fd = open(file,"w")
-	for k in contents_list.keys():
-		md,sz,tm = contents_list[k]
-		fd.write("{:d}|{:d}|{:.4f}|{:s}\n".format(md,sz,tm,k))
-	fd.close()
-
-def read_list(file, contents_list):
-	fd = open(file,"r")
-	while True:
-		line = fd.readline()
-		line = line.rstrip("\n")
-		if not line:
-			break
-		md,sz,tm,f = line.split("|")
-		contents_list[f] = (int(md),int(sz),float(tm))
-	fd.close()
-#####################################################################
-

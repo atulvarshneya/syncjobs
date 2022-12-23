@@ -49,9 +49,11 @@ def logfile():
 			if not ln:
 				break
 			if ln[20:27] == "STARTED":
+				## as 'STARTED' for next frame seen, close the previous frame
 				frames.append(logtext)
 				fmtots.append((total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors))
 				fmtmstamp.append(tmstamp)
+				## initialize frame vars for the next frame
 				fmlast = fmlast + 1
 				logtext = ""
 				tmstamp = ln[0:19]
@@ -69,6 +71,7 @@ def logfile():
 			if ln[20:32] == "DELTA ERRORS":
 				total_errors = total_errors + int(ln[34:])
 			logtext = logtext + ln
+		## at the end of the file, close the current frame
 		frames.append(logtext)
 		fmtots.append((total_credirs, total_cpfiles, total_deldirs, total_delfiles, total_errors))
 		fmtmstamp.append(tmstamp)
