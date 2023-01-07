@@ -141,7 +141,7 @@ for j in jobs:
 	logger.log(1,"Completed job: {:s}".format(j[0]))
 	logger.log(1,"")
 
-msg = "syncjobs completed.\nCreated dirs:  {:5d}\nCopied files:  {:5d}\nDeleted dirs:  {:5d}\nDeleted files: {:5d}\nERRORS  {:5d}\n".format(totmkdir,totcpfile,totdldir,totdlfile,totnumerrs)
+msg = "syncjobs completed. ERRORS  {:5d} | Created dirs:  {:5d}; Copied files:  {:5d}; Deleted dirs:  {:5d}; Deleted files: {:5d}".format(totnumerrs,totmkdir,totcpfile,totdldir,totdlfile)
 if PUSHNOTI == "on":
 	pushnoti.pushnotify(msg, webui_url=webui_url)
 if EMAILNOTI == "on":
