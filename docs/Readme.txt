@@ -76,3 +76,7 @@ crontab entry
 	* use crontab -e to create crontab entry to periodically run syncjobs.py
 		SJREGISTRY=/shares/USBDRIVE/SYNCJOBS.conf/etc/registry
 		0 */3 * * * /home/pi/syncjobs/workspace/syncjobs.py -l4
+
+3. setting up sjwebui (Web UI for SyncJobs)
+
+Follow steps in Webui-service.txt

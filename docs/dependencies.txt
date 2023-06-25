@@ -1,9 +1,0 @@
-flask
-flask-wtf
-requests
-urllib3
-http
-argparse
-datetime
-os
-sys

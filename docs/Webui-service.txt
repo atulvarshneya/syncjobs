@@ -1,3 +1,6 @@
+# Install dependencies
+sudo apt-get install python3-pip
+sudo pip3 install -r /home/pi/syncjobs/docs/requirements.txt
 
 # Copy the sjwebui.service file to /etc/systemd/system/
 sudo cp /home/pi/syncjobs/conf-save/sjwenui.service /etc/systemd/system/
