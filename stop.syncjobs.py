@@ -7,7 +7,10 @@ import sys
 import syncjobs.config as config
 
 # Read the registry and setup jobs file, pid dir, and log file
-reg = config.Config("/home/pi/syncjobs/etc/registry").read_registry()
+regfile = os.environ.get("SJREGISTRY")
+if regfile is None:
+	regfile = "~/.sjregistry"
+reg = config.Config(regfile).read_registry()
 RUNDIR = reg["rundir"]
 
 def findactive(RUNDIR):
