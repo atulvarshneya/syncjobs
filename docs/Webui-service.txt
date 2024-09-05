@@ -1,4 +1,4 @@
-# Install dependencies
+# Install dependencies (if using userid pi, else replace with correct one)
 sudo apt-get install python3-pip
 sudo pip3 install -r /home/pi/syncjobs/docs/requirements.txt
 

@@ -3,7 +3,7 @@ Using syncjobs.py
 1. Files
 Registry file -
 	* default location is ~/.sjregistry. Can override by environment variable SJREGISTRY
-		- Current setup - export SJREGISTRY=/shares/USBDRIVE/SYNCJOBS.conf/etc/registry
+		- Current setup (in ~/.bashrc) - export SJREGISTRY=/shares/USBDRIVE/SYNCJOBS.conf/etc/registry
 	* contains 
 		- location of file listing the jobs
 		jobsloc:/shares/USBDRIVE/SYNCJOBS.conf/etc/jobs
@@ -58,12 +58,12 @@ run dir
 
 mount the data drive
 	* mount at, say, /shares/USBDRIVE the drive to use as the destination for sync'ing the data
-	* add a line in /ets/fstab for auto mounting of the drive
+	* add a line in /ets/fstab for auto mounting of the drive (if using userid pi, else replace with the correct one)
 		UUID=F0806AB5806A81C8 /shares/USBDRIVE ntfs uid=pi,gid=pi 0 0
 
 mount all source drives (likely network drives)
 	* mount the sources at, say, /media/drive1, ...
-	* add lines in /etc/fstab for auto mounting the source [network] drives
+	* add lines in /etc/fstab for auto mounting the source [network] drives (if using userid pi, else replace with the correct one)
 		//netdisk2.lan/Common /media/Common cifs username=guest,password=,uid=pi,gid=pi 0 0
 
 create a jobs file
@@ -73,7 +73,7 @@ setup registry file
 	* format of registry file is given above
 
 crontab entry
-	* use crontab -e to create crontab entry to periodically run syncjobs.py
+	* use crontab -e to create crontab entry to periodically run syncjobs.py  (if using userid pi, else replace with the correct one)
 		SJREGISTRY=/shares/USBDRIVE/SYNCJOBS.conf/etc/registry
 		0 */3 * * * /home/pi/syncjobs/workspace/syncjobs.py -l4
 
