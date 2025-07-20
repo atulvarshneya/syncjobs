@@ -1,5 +1,10 @@
 Using syncjobs.py
 
+0. To be able to mount the USBDRIVE (as SJData) on Windows PCs, install and setup OpenMediaVault (OMV) first on the Raspberry Pi
+   Next,
+       sudo mkdir /shares
+	   sudo ln -s <the mount point of OMV> /shares/USBDRIVE
+
 1. Files
 Registry file -
 	* default location is ~/.sjregistry. Can override by environment variable SJREGISTRY
