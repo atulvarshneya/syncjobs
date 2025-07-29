@@ -99,8 +99,9 @@ def apply_newupddel(src, dst, newlist, updlist, dellist, syncflags):
 				num_errors = num_errors + 1
 		logger.log(2, "Files (deleted) removing done")
 
-		# deletions pass 2: now delete the directories
-		for f in dellist.keys():
+		# deletions pass 2: now delete the directories.
+		# delete longest name first, so, child dirs are deleted before parents
+		for f in sorted(dellist.keys(), key=len, reverse=True):
 			try:
 				md,sz,tm = dellist[f]
 				dirname = dst+"/"+f
